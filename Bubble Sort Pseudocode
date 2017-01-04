@@ -1,0 +1,17 @@
+BUBBLE_SORT(A)
+	
+	IF LENGTH(A) <= 1
+		RETURN A
+		
+	not_sorted <- TRUE
+	
+	WHILE not_sorted = TRUE
+		not_sorted <- FALSE
+		
+		FOR i <- 1 to LENGTH(A)
+			IF A[i] > A[i+1]
+				SWAP(A[i],A[i+1])
+				not_sorted <- TRUE
+	
+	RETURN A
+				
