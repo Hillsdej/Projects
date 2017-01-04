@@ -1,0 +1,18 @@
+LINEAR_SEARCH(A,target)
+	
+	not_found <- TRUE
+	i <- 1
+	
+	WHILE not_found <- TRUE
+		
+		IF i > LENGTH(A)
+			RETURN "target could not be found"
+			not_found <- FALSE
+		ELSE
+			IF A[i] = target
+				RETURN "target found at position" + i
+				not_found <- FALSE
+			ELSE
+				i++
+				
+				
