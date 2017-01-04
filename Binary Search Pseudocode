@@ -1,0 +1,14 @@
+BINARY_SEARCH(A,target,low,high)
+	
+	IF low > high	//base case
+		RETURN 		//target not found
+		
+	IF target = A[middle]
+		RETURN middle
+		
+	IF target < A[middle]						//if the target is less than mid point return everything before the mid point
+		BINARY_SEARCH(A,target,low,middle-1)
+	ELSE										//if target is greater than mid point, return elements after the mid point
+		BINARY_SEARCH(A,target,middle+1,high)
+			
+			
