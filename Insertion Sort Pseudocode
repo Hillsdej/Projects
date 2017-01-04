@@ -1,0 +1,14 @@
+INSERTION_SORT(A)
+
+    IF LENGTH(A) <= 0
+        RETURN A
+    
+    FOR i <- 1 to LENGTH(A)
+        pos <- i
+        WHILE pos > 0 AND A[pos-1] > A[pos]
+			SWAP(A[pos-1], A[pos])
+			pos <- pos-1
+			
+	RETURN A
+
+  
