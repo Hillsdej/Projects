@@ -1,0 +1,21 @@
+QUICK_SORT(A)
+	
+	IF LENGTH(A) <= 1
+		RETURN A
+	
+	pivot <- A[LENGTH(A)]
+	lower <- []
+	greater <- []
+	pivot_list <- []
+	
+	FOR i <- 0 to LENGTH(A)
+		IF A[i] <= pivot
+			APPEND A[i] to lower
+		ELSE
+			APPEND A[i] to greater
+	
+	APPEND pivot to pivot_list
+	
+	RETURN QUICK_SORT(lower) + pivot_list + QUICK_SORT(greater)
+	
+	
