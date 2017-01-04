@@ -1,0 +1,38 @@
+HEAP_SORT(A,count)
+	
+	HEAPIFY(A,count)		//build your heap
+	end <- count-1			//find the last element
+	
+	WHILE end > 0
+		CHANGE_POSITION(A[0],A[end])	//we know that the largest element is at position 0 (the top) so we swap it with the last element
+		end <- end-1					//we now "remove" the last(largest,sorted) element
+		SIFT_DOWN(A,0,end)				//re-establish heap by sifting the top element down to its right place
+	
+HEAPIFY(A,count)
+	
+	start <- floor( (count-2)/2 )		//find the last parent node
+	
+	WHILE start > 0 
+		SIFT_DOWN(A,start,count-1)
+		start <- start - 1				//find the next parent node
+		
+SIFT_DOWN(A,start,end)
+	
+	root <- start		//set the root to be the last parent node
+	
+	WHILE root*2 + 1 <= end			//check if there is a child node
+		left_child <- root*2 + 1
+		swap <- root
+		
+		IF A[swap] < A[left_child]		//is the last parent node bigger than its left child
+			swap <- left_child
+		
+		IF left_child + 1 <= end AND A[swap] < A[left_child + 1] //check if theres a right child and if it is greater
+			swap <- left_child + 1
+			
+		IF swap = root		//this means the parent is greater than its child(ren) so nothing needs to change
+			RETURN
+		ELSE
+			CHANGE_POSITION(A[swap],A[root])
+			root <- swap
+			
