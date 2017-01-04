@@ -1,0 +1,43 @@
+MERGE_SORT(A)
+	
+	IF LENGTH(A) <= 1
+		RETURN A
+		
+	left <- []
+	right <- []
+	middle <- floor(LENGTH(A)/2)
+	
+	FOR i <- 1 to LENGTH(A)
+		IF A[i] < A[middle]
+			APPEND A[i] to left
+		ELSE
+			APPEND A[i] to right
+			
+	left <- MERGE_SORT(left)
+	right <- MERGE_SORT(right)
+	
+	RETURN MERGE(left,right)
+
+MERGE(left,right)
+	
+	out <- []
+	
+	WHILE LENGTH(left) != 0 AND LENGTH(right) != 0
+		IF left[0] < right[0]
+			APPEND left[0] to out
+			REMOVE left[0] from left
+		ELSE
+			APPEND right[0] to out
+			REMOVE right[0] from right
+			
+	WHILE LENGTH(left) != 0
+		APPEND left[0] to out
+		REMOVE left[0] from left
+	
+	WHILE LENGTH(right) != 0
+		APPEND right[0] to out
+		REMOVE right[0] from right
+	
+	RETURN out
+			
+			
