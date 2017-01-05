@@ -1,0 +1,23 @@
+BFS(G,v)
+
+	//create a queue
+	Q <- Queue()
+	
+	//create list to store visited vertices
+	visited <- []
+	
+	//insert starting vertice onto the queue
+	Q.enqueue(v)
+	
+	//if the queue is empty we that all vertices have been visited
+	WHILE LENGTH(Q) != 0
+		
+		u <- Q.dequeue(v)
+		
+		IF u NOT IN visited
+			APPEND u to visited
+			FOR all edges e, related to u
+				Q.enqueue(e)
+				
+	RETURN visited
+		
