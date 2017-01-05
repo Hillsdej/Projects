@@ -1,0 +1,25 @@
+DFS(G,v)
+	
+	//create stack
+	S <- stack()
+	
+	//create list to store visited vertices
+	visited <- []
+	
+	//push the starting vertice onto the stack
+	S.push(v)
+	
+	//if stack is empty we know that all vertices have been visited
+	WHILE LENGTH(S) != 0
+		
+		u <- S.pop()
+		
+		IF u NOT IN visited
+			
+			//mark u as visited
+			APPEND u to visited
+			
+			FOR all edges,e related to u
+				S.push(e)
+	
+	RETURN visited
