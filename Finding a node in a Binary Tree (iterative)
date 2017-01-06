@@ -1,0 +1,16 @@
+BIN_TREE_FIND(tree,target)
+
+	R <- tree
+	WHILE R != None
+		
+		IF R.value = target
+			RETURN TRUE
+		
+		ELSE IF R.value > target
+			R <- R.left
+		
+		ELSE
+			R <- R.right
+			
+		RETURN FALSE
+		
