@@ -1,0 +1,14 @@
+BIN_TREE_FIND(tree,target)
+
+	IF tree.value = target OR tree = 0
+		RETURN tree
+		
+	ELSE IF tree.value > target
+		RETURN BIN_TREE_FIND(tree.left,target)
+	
+	ELSE 
+		RETURN BIN_TREE_FIND(tree.right,target)
+		
+	RETURN 0
+	
+	
