@@ -1,0 +1,8 @@
+PREORDER(tree)
+	PRINT(tree.value)
+	IF tree.left != 0
+		PREORDER(tree.left)
+	IF tree.right != 0
+		PREORDER(tree.right)
+
+//With pre order you want to display the current and then follow the left tree and then the right tree
