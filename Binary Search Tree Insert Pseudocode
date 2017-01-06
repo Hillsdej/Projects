@@ -1,0 +1,18 @@
+BIN_TREE_INSERT(tree,item)
+	
+	IF tree = NONE
+		tree <- node(item)
+		
+	ELSE
+		IF item < tree.left
+			IF tree.left = 0
+				tree.left <- node(item)
+			ELSE
+				BIN_TREE_INSERT(tree.left, item)
+		ELSE
+			IF tree.right = 0
+				tree.right <- node(item)
+			ELSE
+				BIN_TREE_INSERT(tree.right, item)
+				
+	RETURN tree
