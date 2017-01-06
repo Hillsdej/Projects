@@ -1,0 +1,29 @@
+BIN_TREE_FIND_IT(tree,target)
+	
+	R <- tree
+	
+	WHILE R != 0
+	
+		IF R.value = target
+			RETURN TRUE
+		
+		ELSE IF R.value > target
+			R <- tree.left
+		
+		ELSE
+			R <- tree.right
+			
+	RETURN FALSE
+
+BIN_TREE_FIND_REC(tree,target)
+	
+	IF tree.value = target OR tree = 0
+		RETURN tree
+		
+	ELSE IF tree.value < target
+		BIN_TREE_FIND_REC(tree.left,target)
+	
+	ELSE
+		BIN_TREE_FIND_REC(tree.right,target)
+	
+	RETURN 0
