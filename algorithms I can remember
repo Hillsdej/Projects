@@ -1,0 +1,307 @@
+INSERTION_SORT(A)
+	IF LENGTH(A) <= 1
+		RETURN A
+	
+	FOR i <- 0 to LENGTH(A)
+		pos <- i
+		
+		WHILE pos > 0 AND A[pos-1] > A[pos]
+				SWAP(A[pos-1],A[pos])
+				pos <- pos - 1
+	
+	RETURN A
+	
+
+BUBBLE_SORT(A)
+	
+	IF LENGTH(A) <= 1
+		RETURN A
+	
+	not_sorted <- TRUE
+	
+	WHILE not_sorted = TRUE
+		not_sorted <- FALSE
+		FOR i <- 0 to LENGTH(A)
+			IF A[i] > A[i+1]
+				SWAP (A[i], A[i+1])
+				not_sorted <- TRUE
+	
+	RETURN A
+
+
+MERGE_SORT(A)
+	
+	IF LENGTH(A) <= 1
+		RETURN A
+	
+	middle <- floor(LENGTH(A)/2)
+	left <- []
+	right <- []
+	
+	FOR i <- 0 to LENGTH(A)
+		
+		IF A[i] < middle
+			APPEND A[i] to left
+		ELSE
+			APPEND A[i] to right
+			
+	left <- MERGE_SORT(left)
+	right <- MERGE_SORT(right)
+	RETURN MERGE(left,right)
+	
+MERGE(left,right)
+	
+	out <- []
+	
+	WHILE LENGTH(left) != 0 AND LENGTH(right) != 0
+		IF left[0] < right[0]
+			APPEND left[0] to out
+			REMOVE left[0] from left
+		ELSE
+			APPEND right[0] to out
+			REMOVE right[0] from right
+			
+	WHILE LENGTH(left) != 0
+		APPEND left[0] to out
+		REMOVE left[0] from left
+		
+	WHILE LENGTH(right) != 0
+		APPEND right[0] to out
+		REMOVE right[0] from right
+		
+	RETURN out
+	
+QUICK_SORT(A)
+	
+	IF LENGTH(A) <= 1
+		RETURN A
+
+	pivot <- A[LENGTH(A)] //last element
+	lower <- []
+	greater <- []
+	pivot_list <- []
+	
+	FOR i <- 0 to LENGTH(A)
+		IF A[i] < pivot
+			APPEND A[i] to lower
+		ELSE
+			APPEND A[i] to greater
+			
+	APPEND pivot to pivot_list
+	
+	RETURN QUICK_SORT(lower) + pivot_list + QUICK_SORT(greater)
+	
+	
+HEAP_SORT(A,count)
+	
+	//Establish heap
+	HEAPIFY(A,count)
+	
+	//find your last element
+	end <- count-1
+	
+	WHILE end > 0
+		CHANGE_POSITION(A[0],A[end]) //we know that the largest element is at the root so we swap it
+		SIFT_DOWN(A,0,end) //re-establish heap structure
+		end <- end-1 	// this "removes" the last element which is the largest and sorted 
+		
+HEAPIFY(A,count)
+
+	//find the last parent element and start from there
+	start <- floor( (count-2) / 2)
+	
+	WHILE start > 0
+		SIFT_DOWN(A,start,count-1)
+		start <- start-1
+		
+SIFT_DOWN(A,start,end)
+	
+	root <- start
+	//root is the last parent element
+	
+	//check for left child
+	
+	WHILE (root*2)+1 < end
+		left_child <- (root*2)+1
+		swap <- root
+		
+		IF A[swap] < left_child
+			swap <- left_child
+		
+		//check for right child and is it greater
+		
+		IF left_child + 1 < end AND A[swap] < A[left_child + 1]
+			swap <- left_child + 1
+			
+		IF swap = root 
+			//this means nothing has changed and that the root is greater thatn its children
+			RETURN 
+		
+		ELSE
+			CHANGE_POSITION(A[swap],A[root])
+			root <- swap
+			
+
+linear_search(A,target)
+
+	not_found <- TRUE
+	i <- 0
+	
+	WHILE not_found = TRUE 
+		
+		IF i <= LENGTH(A)
+			IF A[i] = target
+				RETURN "target found"
+				not_found <- FALSE
+			ELSE
+				i++
+		ELSE
+			RETURN "not in a"
+			not_found <- FALSE
+
+BINARY_SEARCH(A,target,lower,higher)
+	
+	//base case
+	IF lower > higher
+		RETURN FALSE
+	
+	middle <- floor( (lower+higher) / 2 )
+	
+	IF A[middle] = target 
+		RETURN TRUE
+		
+	ELSE IF A[middle] < target
+		BINARY_SEARCH(A,target,lower,middle-1)
+		
+	ELSE
+		BINARY_SEARCH(A,target,middle+1,higher)
+		
+
+DFS(G,v)
+
+	//create stack
+	S <- stack ()
+	//create visited list to store the vertices that have been marked
+	visited <- []
+	//push the starting vertice onto the stack
+	S.push(v) 
+	
+	WHILE LENGTH S != 0				//if the stack was empty we would know that all nodes have been visited
+		u <- S.pop()				
+		
+		IF u NOT IN visited
+			APPEND u to visited
+			
+			FOR edges e related to u
+				S.push(e)
+				
+
+BFS(G,v)
+
+	Q <- Queue()
+	visited <- []
+	
+	Q.enqueue(v)
+	
+	WHILE LENGTH(Q) != 0
+		u <- Q.dequeue()
+		
+		IF u NOT IN visited
+			APPEND u to visited
+			
+			FOR all edges,e related to u
+				Q.enqueue(e)
+				
+				
+BIN_TREE_INSERT(tree,item)
+	
+	IF tree = 0
+		tree <- node(item)
+	
+	ELSE IF tree.value > node(item)
+		IF tree.left = 0
+			tree.left <- node(item)
+		ELSE
+			BIN_TREE_INSERT(tree.left,item)
+		
+	ELSE
+		IF tree.right = 0
+			tree.right <- node(item)
+		ELSE
+			BIN_TREE_INSERT(tree.right,item)
+		
+	RETURN tree
+	
+BIN_TREE_FIND_IT(tree,target)
+
+	R <- tree
+	
+	WHILE R >= 0
+		
+		IF R.value = target
+			RETURN TRUE
+		
+		ELSE IF R.value > target
+			R <- R.left
+			
+		ELSE
+			R <- R.right
+	
+	RETURN FALSE
+	
+
+BIN_TREE_FIND_REC(tree,target)
+
+	IF tree.value = target OR tree = 0
+		RETURN TRUE
+		
+	ELSE IF tree.value > target
+		BIN_TREE_FIND_REC(tree.left,target)
+		
+	ELSE
+		BIN_TREE_FIND_REC(tree.right,target)
+		
+	RETURN FALSE
+	
+	
+PREORDER(tree)
+	
+	PRINT(tree.value)
+	IF tree.left != 0
+		PREORDER(tree.left)
+	IF tree.right != 0
+		PREORDER(tree.right)
+		
+POSTORDER(tree)
+
+	IF tree.left != 0
+		POSTORDER(tree.left)
+	IF tree.right != 0
+		POSTORDER(tree.right)
+	PRINT(tree.value)
+
+INORDER(tree)
+	
+	IF tree.left != 0
+		INORDER(tree.left)
+	PRINT(tree.value)
+	IF tree.right != 0
+		INORDER(tree.right)
+		
+		
+		
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			
+			
