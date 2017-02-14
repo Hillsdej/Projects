@@ -1,0 +1,33 @@
+public class User
+{
+	package example; //change
+	
+	/**
+ 	*
+ 	* @author JH
+ 	*/
+	
+    private int id = -1;
+    private String name="";
+    private String speciality="";
+       
+    public int get_id()
+	{
+		return id;
+    }
+         
+	public void set_id(int a_id)
+	{
+    	id = a_id;
+    }
+         
+	public String getName()
+	{
+    	return name;
+    }
+         
+	public void setName(String aName)   
+	{
+        name = aName;
+    }
+}
