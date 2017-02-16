@@ -59,7 +59,6 @@ public class User
         phone_num = aPhone_num;
     }
 	
-	
 	//method to display number of sessions from eric's add session class
 	//method to display membership status from josh's updating membership class
 }
