@@ -62,4 +62,4 @@ public class User
 	
 	//method to display number of sessions from eric's add session class
 	//method to display membership status from josh's updating membership class
-	
+}
