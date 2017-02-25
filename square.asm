@@ -2,7 +2,7 @@
 
 section.data
 	global_start
-	char db " "				;declares char to store dotes and newlines
+	char db " "			;declares char to store dotes and newlines
 	squaresize db 10 		;10x10 square
 	
 
@@ -17,17 +17,17 @@ _start:
 		mov rbx, [squaresize]		;move squaresize into rbx to set size of inner loop (column of square)
 		
 		inner_loop:
-			call dot				;draw dot
-			dec bx					;subtract from counter
-			cmp bx,0				;check if hit 0
+			call dot			;draw dot
+			dec bx				;subtract from counter
+			cmp bx,0			;check if hit 0
 			jg inner_loop			;repeat if not 0 for inner loop
 			
 		call linefeed				;go to next line
-		dec ax						;subtract from counter
-		cmp ax,0					;check if 0
+		dec ax					;subtract from counter
+		cmp ax,0				;check if 0
 		jne outer_loop				;repeat if not 0 for outer loop
 		call linefeed				;go to next line
-		call exit					;exit cleanly
+		call exit				;exit cleanly
 		
 exit:
 	mov eax,1						;system call to exit            
@@ -45,7 +45,7 @@ linefeed:
 	push rbx						;push rbx on to stack to allow inner loop to occur 
 	mov eax,4						;system call to write out           
 	mov ebx,1						;standard out to screen 
-	mov ecx, char					;go to next line on screen 
+	mov ecx, char						;go to next line on screen 
 	mov edx,1						;size of new line
 	int 80h							;interrupt to kernel to go to next line by looking into registers
 	pop rbx							;pop rbx on to stack to allow outer loop to occur
@@ -54,12 +54,12 @@ linefeed:
 	
 dot:	
 
-	mov [char],  byte '.'			;put dot (.) in char
+	mov [char],  byte '.'					;put dot (.) in char
 	push rax						;push rax on to stack to allow outer loop to occur
 	push rbx						;push rbx on to stack to allow inner loop to occur 
 	mov eax,4						;system call to write out           
 	mov ebx,1						;standard out to screen 
-	mov ecx, char					;put dot in register ecx 
+	mov ecx, char						;put dot in register ecx 
 	mov edx,1						;size of dot in register
 	int 80h							;interrupt to kernel to print dot on screen by looking into registers        
 	pop rbx
