@@ -10,15 +10,15 @@ section.text
 _start:
     mov rax, [basesize]
     outer_loop:
-        mov rbx, [i]
+        mov rbx, [0]
         inner_loop:
             call dot
             inc bx
             cmp [i],bx
             jne inner_loop
         call linefeed
-        inc [i]
-        cmp[i],ax
+        dec ax
+        cmp ax,0
         jne outer_loop
         call linefeed
         call exit
