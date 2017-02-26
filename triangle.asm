@@ -19,9 +19,16 @@ _start:
         call linefeed
         inc [i]
         cmp[i],ax
-        jne
+        jne outer_loop
         call linefeed
         call exit
+
+exit:
+	mov eax,1						;system call to exit            
+	mov ebx,0						;exit value             
+	int 80h							;call kernel with interrupt to exit program
+	ret
+
 
 ;new line code section
 
