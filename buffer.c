@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     if (argc != 3) /*if there aren't 3 arguments, the program will exit*/
     {
-        /*print statement goes here*/
+        printf("insufficient number of arguments given")
         exit(1);
     }
 
@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
     if (in_fd < 0) /*gets negative number if file is not there*/
     {
         /*another print statement,saying file not found*/
+        printf("file cannot be found")
         exit(2);
     }
 
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
     if (out_fd < 0) /*checks if file is created*/
     {
         /*print statement which says file not created*/
+        printf("file not created")
         exit(3);
     }
     
