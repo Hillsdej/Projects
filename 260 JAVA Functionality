@@ -3,36 +3,36 @@ public class User
 	package example; //change
 	//@author JH
  	
-    private int id = -1;
-    private String name="";
-    private int dob= -1;	// Can calculate age using dob
+  private int id = -1;
+  private String name="";
+  private int dob= -1;	// Can calculate age using dob
 	private String email="";
 	private int phone_num = -1
        
-    public int get_id()
+  public int get_id()
 	{
 		return id;
-    }
+  }
          
 	public void set_id(int a_id)
 	{
-    	id = a_id;
-    }
+    id = a_id;
+  }
          
 	public String getName()
 	{
-    	return name;
-    }
+    return name;
+  }
          
 	public void setName(String aName)   
 	{
-        name = aName;
-    }
+    name = aName;
+  }
 	
 	 public int get_dob()
 	{
 		return dob;
-    }
+  }
          
 	public void set_dob(int a_dob)
 	{
