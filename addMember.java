@@ -5,7 +5,7 @@ public class Member
  	
     private int id = -1;
     private String name="";
-    private int dob= -1;	// Can calculate age using dob
+    private int dob= -1;	// Can calculate age using dob by importing date class
     private String email="";
     private int phone_num = -1
     
