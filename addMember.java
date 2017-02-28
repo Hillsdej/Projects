@@ -1,4 +1,4 @@
-public class User
+public class Member
 {
     package example; //change
     //@author JH
