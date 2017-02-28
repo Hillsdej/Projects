@@ -4,58 +4,58 @@ public class User
     //@author JH
  	
     private int id = -1;
-  	private String name="";
-  	private int dob= -1;	// Can calculate age using dob
-	private String email="";
-	private int phone_num = -1
+    private String name="";
+    private int dob= -1;	// Can calculate age using dob
+    private String email="";
+    private int phone_num = -1
     
     public int get_id()
     {
-  	    return id;
+        return id;
     {
          
-	public void set_id(int a_id)
+    public void set_id(int a_id)
     {
         id = a_id;
     }
          
-	public String getName()
+    public String getName()
     {
         return name;
     }
          
-	public void setName(String aName)   
-	{
+    public void setName(String aName)   
+    {
         name = aName;
     }
 	
-	public int get_dob()
-	{
-	    return dob;
+    public int get_dob()
+    {
+	return dob;
     }
   
-	public void set_dob(int a_dob)
-	{
+    public void set_dob(int a_dob)
+    {
     	dob = a_dob;
     }
 	
-	public String getEmail()
-	{
+    public String getEmail()
+    {
     	return email;
     }
          
-	public void setEmail(String aEmail)   
-	{
+    public void setEmail(String aEmail)   
+    {
         email = aEmail;
     }
 	
-	public int getPhone_num()
-	{
+    public int getPhone_num()
+    {
     	return phone_num;
     }
          
-	public void setPhone_num(int aPhone_num)   
-	{
+    public void setPhone_num(int aPhone_num)   
+    {
         phone_num = aPhone_num;
     }
 	
