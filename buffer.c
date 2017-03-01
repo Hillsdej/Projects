@@ -51,8 +51,8 @@ int main(int argc, char *argv[])
             exit(4);
         }
         
-        printf("this is the number of characters read at a time: ");
-        printf("%i\n",rd_size);
+        /*printf("this is the number of characters read at a time: ");
+        printf("%i\n",rd_size);*/
         
         wr_size = write(out_fd, buf, rd_size); /*repeatedly write from buffer to new file*/
         
@@ -64,10 +64,10 @@ int main(int argc, char *argv[])
         {
             close(in_fd);
             close(out_fd); /*close files*/
-            printf("this is the number of characters read in total");
+            printf("this is the number of characters read in total: ");
             printf("%i\n",totalChar);
             countBuf--;
-            printf("this is the number of times the buffer is filled");
+            printf("this is the number of times the buffer is filled: ");
             printf("%i\n",countBuf);
             exit(5);
         }
