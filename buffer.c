@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
     {
         rd_size = read(in_fd, buf,BUF_SIZE); 
         
+        scanf("%[^\n]buf",buf);
         int i;
         for(i=0; (i<=rd_size); i++)
         {
