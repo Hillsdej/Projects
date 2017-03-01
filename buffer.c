@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
             close(in_fd);
             close(out_fd); /*close files*/
             countBuf--;
-            printf("%\s","this is the number of times the buffer is filled");
+            printf("%s\n","this is the number of times the buffer is filled");
             printf("%i\n",countBuf);
             exit(5);
         }
