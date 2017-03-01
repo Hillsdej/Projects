@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
     int rd_size = 1, wr_size;
     char buf[BUF_SIZE];   /*Declares buffer size*/
     int countBuf = 0;
+    int totalChar = 0;
 
     if (argc != 3) /*if there aren't 3 arguments, the program will exit*/
     {
@@ -50,12 +51,12 @@ int main(int argc, char *argv[])
             exit(4);
         }
         
-        printf("this is the read size: ");
+        printf("this is the number of characters read at a time: ");
         printf("%i\n",rd_size);
         
         wr_size = write(out_fd, buf, rd_size); /*repeatedly write from buffer to new file*/
-        printf("this is the write size: ");
-        printf("%i\n",wr_size);
+        
+        totalChar = totalChar + rd_size;
         
         countBuf++;
                 
@@ -63,8 +64,10 @@ int main(int argc, char *argv[])
         {
             close(in_fd);
             close(out_fd); /*close files*/
+            printf("this is the number of characters read in total");
+            printf("%i\n",totalChar);
             countBuf--;
-            printf("%s\n","this is the number of times the buffer is filled");
+            printf("this is the number of times the buffer is filled");
             printf("%i\n",countBuf);
             exit(5);
         }
