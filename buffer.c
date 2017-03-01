@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#define BUF_SIZE 500      /*Defines the buffer size*/
+#define BUF_SIZE 2000      /*Defines the buffer size*/
 #define OUTPUT_MODE 0700  /*Sets permissions*/
 
 int main(int argc, char *argv[])
@@ -42,15 +42,14 @@ int main(int argc, char *argv[])
       
     while (rd_size > 0)
     {
-        rd_size = read(in_fd, buf,BUF_SIZE); 
-        
+        rd_size = read(in_fd, buf,BUF_SIZE);
         
         int i;
         for(i=0; (i<=rd_size); i++)
         {
-            if (buf[i] == " ")
+            if (buf[i] == 32 | buf[i] == 46)
             {
-                countWord++;
+                countWord = countWord+1;
             }
         }
         
@@ -92,4 +91,3 @@ int main(int argc, char *argv[])
 
 /*count number of times the while loop goes around to count the number of times the buffer is filled, remember to subtract one*/
 /*declare another buffer, to compare the two documents. declare other numbers to store these. compare character to character "easy way"*/
-
