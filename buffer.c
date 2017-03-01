@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     int in_fd, out_fd;
     int rd_size = 1, wr_size;
     char buf[BUF_SIZE];   /*Declares buffer size*/
-    int countBuf = 0
+    int countBuf = 0;
 
     if (argc != 3) /*if there aren't 3 arguments, the program will exit*/
     {
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
             exit(5);
         }
         
-        countBuf ++
-        printf(%i,countBuf) 
+        countBuf ++;
+        printf(%i,countBuf); 
         /*for counting the number of times the loop goes around*/
         
     }
