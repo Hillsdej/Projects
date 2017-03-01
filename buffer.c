@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
         
         if (rd_size <0)
         {
+            printf("Something went wrong");
             exit(4);
         }
         
@@ -59,7 +60,7 @@ int main(int argc, char *argv[])
         }
         
         countBuf ++;
-        printf(%i,countBuf); 
+        printf("%i\n",countBuf); 
         /*for counting the number of times the loop goes around*/
         
     }
