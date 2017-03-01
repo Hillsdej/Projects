@@ -54,6 +54,8 @@ int main(int argc, char *argv[])
         printf("%i\n",rd_size);
         
         wr_size = write(out_fd, buf, rd_size); /*repeatedly write from buffer to new file*/
+        printf("this is the write size: ");
+        printf("%i\n",wr_size);
         
         countBuf++;
                 
