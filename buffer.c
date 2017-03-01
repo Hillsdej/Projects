@@ -52,15 +52,19 @@ int main(int argc, char *argv[])
         
         wr_size = write(out_fd, buf, rd_size); /*repeatedly write from buffer to new file*/
         
+        countBuf++;
+                
         if (wr_size<=0)
         {
             close(in_fd);
             close(out_fd); /*close files*/
+            countBuf--;
+            printf("%\s","this is the number of times the buffer is filled");
+            printf("%i\n",countBuf);
             exit(5);
         }
         
-        countBuf ++;
-        printf("%i\n",countBuf); 
+        
         /*for counting the number of times the loop goes around*/
         
     }
