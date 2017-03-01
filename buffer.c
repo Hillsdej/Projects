@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
             exit(4);
         }
         
+        printf("this is the read size: ");
         printf("%i\n",rd_size);
         
         wr_size = write(out_fd, buf, rd_size); /*repeatedly write from buffer to new file*/
