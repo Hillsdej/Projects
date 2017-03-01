@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
     char buf[BUF_SIZE];   /*Declares buffer size*/
     int countBuf = 0;
     int totalChar = 0;
-
+    int countWord = 0;
+    
     if (argc != 3) /*if there aren't 3 arguments, the program will exit*/
     {
         printf("insufficient number of arguments given");
@@ -38,12 +39,20 @@ int main(int argc, char *argv[])
         exit(3);
     }
     
+      
     while (rd_size > 0)
     {
-        rd_size = read(in_fd, buf,BUF_SIZE); /*repeatedly read from original file into buffer*/
-        /*possibly printf(rd_size) for counting how many are read at one time*/
-        /*can use this to read the number of characters*/
-        /*for loop to check each character*/
+        rd_size = read(in_fd, buf,BUF_SIZE); 
+        
+        int i;
+        for(i=0; (i<=rd_size); i++)
+        {
+            if (buf[i] == " ")
+            {
+                countWord++;
+            }
+        }
+        
         
         if (rd_size <0)
         {
@@ -69,6 +78,8 @@ int main(int argc, char *argv[])
             countBuf--;
             printf("this is the number of times the buffer is filled: ");
             printf("%i\n",countBuf);
+            printf("this is the number of words: ");
+            printf("%i\n",countWord);
             exit(5);
         }
         
