@@ -55,7 +55,7 @@ cr_file* cr_open(char * filename, int buffersize){
 char cr_read_byte(cr_file* f){
   if (buff -> usedbuffer == buff ->bufferlength)
   {
-    return refill(buff)
+    return refill(buff);
   }
   
   buff -> buffer[usedbuffer];
