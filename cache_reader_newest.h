@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -5,6 +6,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #inlcude <malloc.h>
+
+
 
 /*sys.types are probs needed*/
 /*find out what includes need to be present for the system calls for open,read and close*/ 
