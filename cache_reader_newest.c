@@ -32,8 +32,8 @@ cr_file* cr_open(char * filename, int buffersize){
 
   //Info on malloc
   //http://www.space.unibe.ch/comp_doc/c_manual/C/FUNCTIONS/malloc.html
-  FILE* f;
-  if ((f = open(filename, O_RDONLY | O_DIRECT | O_SYNC)) == NULL){  /*replace with open*/
+  int f;
+  if ((f = open(filename, O_RDONLY | O_DIRECT | O_SYNC)) < 0){  /*replace with open*/
     fprintf(stderr, "Cannot open %s\n", filename);
     return 0;
   }
@@ -42,7 +42,7 @@ cr_file* cr_open(char * filename, int buffersize){
   a->file=f;
   a->bufferlength=buffersize;
   a->usedbuffer=buffersize; //Start off with no characters, so refill will work as expected
-  a->buffer=(char*)malloc(sizeof(char)*buffersize); /*replace with memaline*/
+  a->buffer=(char*)memalign(sizeof(char)*buffersize,sizeof(char)*buffersize); /*replace with memaline*/
 
   refill(a);
   return a;
