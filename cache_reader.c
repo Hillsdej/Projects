@@ -13,6 +13,7 @@ int refill(cr_file* buff){
   else{
     buff->usedbuffer=0;
     int len=fread(buff->buffer, sizeof(char), buff->bufferlength, buff->file);
+    printf("-----------Buffer refilled----------\n");
     //If we didn't fill the buffer, fill up with EOF
     if(len<buff->bufferlength)
       for(int i=len;i<buff->bufferlength;i++)
@@ -49,7 +50,7 @@ cr_file* cr_open(char * filename, int buffersize){
 }
 
 char cr_read_byte(cr_file* buff){
-  
+  printf("  New Byte\n");
   if (buff -> usedbuffer == buff ->bufferlength) /* check if the buffer pointer is the same as the buffer length*/
   {
     refill(buff);
