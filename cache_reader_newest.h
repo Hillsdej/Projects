@@ -15,7 +15,7 @@
 //The internals of this struct aren't important
 //from the user's point of view
 typedef struct{
-  FILE* file;        //File needs to be represented by an integer
+  int file;        //File needs to be represented by an integer
   int bufferlength;  //Fixed buffer length
   int usedbuffer;    //Current point in the buffer
   char* buffer;      //A pointer to a piece of memory
