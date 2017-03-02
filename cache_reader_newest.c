@@ -13,7 +13,7 @@ int refill(cr_file* buff){
   else{
     buff->usedbuffer=0;
     int len=read(buff->file, buff->buffer, buff->bufferlength); //This needs to be replaced. Problem with order when reading.
-    /If we didn't fill the buffer, fill up with EOF
+    //If we didn't fill the buffer, fill up with EOF
     if(len<buff->bufferlength)
       for(int i=len;i<buff->bufferlength;i++)
         buff->buffer[i]=EOF;  //Accessing like an array!
