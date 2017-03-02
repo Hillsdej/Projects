@@ -12,9 +12,8 @@ int refill(cr_file* buff){
     return 0;
   else{
     buff->usedbuffer=0;
-    int len=fread(buff->buffer, sizeof(char), buff->bufferlength, buff->file); //This needs to be replaced. Problem with order when reading.
-    //ssize_t read(int fd, void *buf, size_t count);
-    //If we didn't fill the buffer, fill up with EOF
+    int len=read(buff->file, buff->buffer, buff->bufferlength); //This needs to be replaced. Problem with order when reading.
+    /If we didn't fill the buffer, fill up with EOF
     if(len<buff->bufferlength)
       for(int i=len;i<buff->bufferlength;i++)
         buff->buffer[i]=EOF;  //Accessing like an array!
@@ -25,7 +24,7 @@ int refill(cr_file* buff){
 
 void cr_close(cr_file* f){ /*this also needs to be changed*/
   free(f->buffer);
-  fclose(f->file);
+  close(f->file);
 }
 
 
@@ -34,7 +33,7 @@ cr_file* cr_open(char * filename, int buffersize){
   //Info on malloc
   //http://www.space.unibe.ch/comp_doc/c_manual/C/FUNCTIONS/malloc.html
   FILE* f;
-  if ((f = fopen(filename, "r")) == NULL){  /*replace with open*/
+  if ((f = open(filename, O_RDONLY)) == NULL){  /*replace with open*/
     fprintf(stderr, "Cannot open %s\n", filename);
     return 0;
   }
