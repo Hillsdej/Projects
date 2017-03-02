@@ -15,11 +15,11 @@ int refill(cr_file* buff){
     int len=fread(buff->buffer, sizeof(char), buff->bufferlength, buff->file);
     //If we didn't fill the buffer, fill up with EOF
     if(len<buff->bufferlength)
-      for(int i=len;i<buff->bufferlength;i++)	
-	buff->buffer[i]=EOF;  //Accessing like an array!
+      for(int i=len;i<buff->bufferlength;i++)
+        buff->buffer[i]=EOF;  //Accessing like an array!
     return len;
   }
-  
+
 }
 
 void cr_close(cr_file* f){
@@ -48,24 +48,22 @@ cr_file* cr_open(char * filename, int buffersize){
   return a;
 }
 
-
-
-
-//------------------------------------------------------------------
-char cr_read_byte(cr_file* f){
-  if (buff -> usedbuffer == buff ->bufferlength)
+char cr_read_byte(cr_file* buff){
+  
+  if (buff -> usedbuffer == buff ->bufferlength) /* check if the buffer pointer is the same as the buffer length*/
   {
-    return refill(buff);
+    refill(buff);
   }
   
-  buff -> buffer[usedbuffer];
-  return buff;
-  buff -> usedbuffer++;
+  /*otherwise load that char into the buffer,and then move to the next one*/
+  char b = buff -> buffer[buff -> usedbuffer];
+  /*store in a variable, then return*/
   
-  // your code goes here
-  // remember that this needs to return a char (a byte, put another way..)
+  
+  buff -> usedbuffer++;
+  return b;
+  
+  
   return EOF; // this is just so the compile works...
 }
-
-
 
