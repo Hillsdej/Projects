@@ -1,24 +1,21 @@
-#include <fcntl.h>
+#include <fcntl.h> //needed to import standard libraries to run the code
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 
 #define BUF_SIZE 500      /*Defines the buffer size*/
-//#define BUF_SIZEN 500
 #define OUTPUT_MODE 0700  /*Sets permissions*/
 
 
 int main(int argc, char *argv[])
 {
-    int in_fd, out_fd;
-    //int in_fdn;
-    //int rd_sizen = 1
-    int rd_size = 1, wr_size;
+    int in_fd, out_fd; //in_fd stores number associated with input file, out_fd number wiht output file
+    int rd_size = 1, wr_size; //stores the amount of data put into the buffer
     char buf[BUF_SIZE];   /*Declares buffer size*/
-    //char bufn[BUF_SIZEN];
-    int countBuf = 0;
-    int totalChar = 0;
-    int countWord = 0;
+    
+    int countBuf = 0; //counts number of times buffer is refilled
+    int totalChar = 0; //counts number of characters read
+    int countWord = 0; //counts number of words read
     
     if (argc != 3) /*if there aren't 3 arguments, the program will exit*/
     {
@@ -49,20 +46,9 @@ int main(int argc, char *argv[])
     while (rd_size > 0)
     {
         rd_size = read(in_fd, buf,BUF_SIZE);
-        //rd_sizen = read(in_fdn,bufn,BUF_SIZEN);
-        /*
-        int j;
-        for(j=0; (j<=BUF_SIZE),j++)
-        {
-            if (buf[j] != bufn[j])
-            {
-                printf("they are not the same file");
-            }
-        }
-        */
-        
+                
         int i;
-        for(i=0; (i<=rd_size); i++)
+        for(i=0; (i<=rd_size); i++) //loop through to check for spaces and full stops to indicate words
         {
             if (buf[i] == 32 | buf[i] == 46)
             {
