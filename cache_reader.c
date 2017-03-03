@@ -4,6 +4,8 @@
 //http://www.phim.unibe.ch/comp_doc/c_manual/C/SYNTAX/struct.html
 //http://vergil.chemistry.gatech.edu/resources/programming/c-tutorial/structs.html
 
+//int countBytes = 0; for providing statistics
+//int countBuffer = 0; for providing statistics
 
 int refill(cr_file* buff){
   //Refills a buffer
@@ -13,7 +15,9 @@ int refill(cr_file* buff){
   else{
     buff->usedbuffer=0;
     int len=fread(buff->buffer, sizeof(char), buff->bufferlength, buff->file);
-    printf("-----------Buffer refilled----------\n");
+    //countBuffer = countBuffer + 1;
+    //printf("\n%i\n", countBuffer); counts how many times the buffer is refilled
+    //printf("-----------Buffer refilled----------\n"); prints when buffer is refilled
     //If we didn't fill the buffer, fill up with EOF
     if(len<buff->bufferlength)
       for(int i=len;i<buff->bufferlength;i++)
@@ -50,7 +54,9 @@ cr_file* cr_open(char * filename, int buffersize){
 }
 
 char cr_read_byte(cr_file* buff){
-  printf("  New Byte\n");
+  //printf("  New Byte\n"); shows when a new byte is read
+  //countBytes = countBytes + 1;
+  //printf("%i\n", countBytes);
   if (buff -> usedbuffer == buff ->bufferlength) /* check if the buffer pointer is the same as the buffer length*/
   {
     refill(buff);
