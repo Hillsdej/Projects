@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
+#include <fcntl.h> //the following includes are new
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
 
-/*sys.types are probs needed*/
-/*find out what includes need to be present for the system calls for open,read and close*/ 
 
 //The internals of this struct aren't important
 //from the user's point of view
