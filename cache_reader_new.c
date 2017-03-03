@@ -1,9 +1,7 @@
 #include "cache_reader.h"
 
-
 //http://www.phim.unibe.ch/comp_doc/c_manual/C/SYNTAX/struct.html
 //http://vergil.chemistry.gatech.edu/resources/programming/c-tutorial/structs.html
-
 
 int refill(cr_file* buff){
   //Refills a buffer
@@ -12,7 +10,7 @@ int refill(cr_file* buff){
     return 0;
   else{
     buff->usedbuffer=0;
-    int len=read(buff->file, buff->buffer, buff->bufferlength); //This needs to be replaced. Problem with order when reading.
+    int len=read(buff->file, buff->buffer, buff->bufferlength); //reordered.
     /If we didn't fill the buffer, fill up with EOF
     if(len<buff->bufferlength)
       for(int i=len;i<buff->bufferlength;i++)
@@ -22,18 +20,17 @@ int refill(cr_file* buff){
 
 }
 
-void cr_close(cr_file* f){ /*this also needs to be changed*/
+void cr_close(cr_file* f){ /*close changed*/
   free(f->buffer);
   close(f->file);
 }
-
 
 cr_file* cr_open(char * filename, int buffersize){
 
   //Info on malloc
   //http://www.space.unibe.ch/comp_doc/c_manual/C/FUNCTIONS/malloc.html
   FILE* f;
-  if ((f = open(filename, O_RDONLY)) == NULL){  /*replace with open*/
+  if ((f = open(filename, O_RDONLY)) == NULL){  /*replaced with open*/
     fprintf(stderr, "Cannot open %s\n", filename);
     return 0;
   }
@@ -58,11 +55,9 @@ char cr_read_byte(cr_file* buff){
   /*otherwise load that char into the buffer,and then move to the next one*/
   char b = buff -> buffer[buff -> usedbuffer];
   /*store in a variable, then return*/
-  
-  
+    
   buff -> usedbuffer++;
   return b;
-  
-  
+   
   return EOF; // this is just so the compile works...
 }
