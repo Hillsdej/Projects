@@ -9,19 +9,24 @@
 #include "se207_sems.h"
 
 int main(int argc, char argv[]){
-  //Use our source file as the "key"
+  //Our key is the source file
   int id=se207_semget("critical_example2.c",1);
 
   int pid=fork();
   if(pid){
+    
     //Lady Macbeth
+    //set counter for Lady Macbeth   
     int ladyM = 0;
+    
+    //Loop through to print her lines to stdout
     while(ladyM < 6){
       se207_wait(id);
       
+      //Set Conditionals to print lines in order
       if (ladyM == 0){
         printf("LADY MACBETH Donalbain.\n");
-        printf("--------------------\n");
+        printf("--------------------\n"); //for purpose of clarity
         rsleep();
         printf("--------------------\n");
         }
@@ -60,16 +65,19 @@ int main(int argc, char argv[]){
         printf("--------------------\n");
         rsleep();
         printf("--------------------\n");
-        printf("-----END-----\n");
+        printf("-----END-----\n"); //signify completion
         }
       
-      ladyM = ladyM + 1;
-      se207_signal(id);
+      ladyM = ladyM + 1; //increment counter
+      se207_signal(id); //call semiphore
       }
   }
   else{
     //Macbeth
+    //set counter for Macbeth
     int mac = 0;
+    
+    //Loop through to print his lines to stdout
     while(mac < 5){
       se207_wait(id);
       
@@ -121,8 +129,8 @@ int main(int argc, char argv[]){
         rsleep();
         printf("--------------------\n");
         }
-      mac = mac + 1;
-      se207_signal(id);
+      mac = mac + 1; // increment counter
+      se207_signal(id); //call semiphore
       }
     }
   }
