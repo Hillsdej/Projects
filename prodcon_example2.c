@@ -36,13 +36,13 @@ int main(int argc, char argv[]){
     while(1){
     
       se207_wait(id);
-      while (data[prodposition] == data[conposition]);
+      while (data[prodposition] == data[conposition]); //check if positions are same, if so do nothing
       printf("Consuming item number %d...\n",data[conposition]);
       sleep(10);
       char item=data[data[conposition]];
       
       printf("Consumed item number %d.  Item value was %d\n",data[conposition],item);
-      data[conposition] = (data[conposition] + 1) % bufferlength;
+      data[conposition] = (data[conposition] + 1) % bufferlength; //loop back to start, make sure behind producer
     }
 
     //Detatch
@@ -65,12 +65,12 @@ int main(int argc, char argv[]){
     data[conposition] = 0;
     while(1){
     
-    while((data[prodposition] + 1) % bufferlength == data[conposition]);
+    while((data[prodposition] + 1) % bufferlength == data[conposition]); //check if positions are the same, if so do nothing
       printf("Producing item number %d...\n",data[prodposition]);
       sleep(2);
       data[data[prodposition]]=data[prodposition]*2; //Simple data, easy to check.
       printf("Produced item number %d.  Value is %d\n",data[prodposition],data[data[prodposition]]);
-           data[prodposition] = (data[prodposition] +1) % bufferlength;
+           data[prodposition] = (data[prodposition] +1) % bufferlength; //loop back to start, make sure in front of consumer
       se207_signal(id);
     }
     //Detatch
